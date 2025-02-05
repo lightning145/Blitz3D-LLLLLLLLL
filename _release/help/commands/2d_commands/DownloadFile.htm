@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <link rel=stylesheet href=../css/commands.css type=text/css>
+</head>
+
+<body>
+    <h1>DownloadFile url$, file$</h1>
+    <h1>Parameters</h1>
+    <table>
+        <tr>
+            <td>
+                url$ = URL of file.<br/>
+                file$ = path of target file.
+            </td>
+        </tr>
+    </table>
+    <h1>Description</h1>
+    <table>
+        <tr>
+            <td>
+                <b>Warning: This feature is testing, maybe have TUNS of bugs.</b><br/>
+                This feature is for replacing <a href="https://github.com/Regalis11/scpcb/blob/master/Update.bb" target="_blank">Remote File Engine</a>.<br/>
+                Download file from <i>url$</i>, and save as <i>file$</i>, if file exists, then override it.<br/>
+                If download failed, then return 0, otherwise return 1.
+            </td>
+        </tr>
+    </table>
+    <h1><a href=../2d_examples/DownloadFile.bb>Example</a></h1>
+    <table>
+        <tr>
+            <td>
+                ; Download File Example<br/>
+                <br/>
+                DownloadFile("https://scpcbgame.cn/changelog.txt", "changelog.txt") ; download it and save as "changelog.txt", suggest encoding is UTF-8<br/>
+                Local ChangeLogFile = OpenFile("changelog.txt")<br/>
+                While Not Eof(ChangeLogFile)<br/>
+                	l$ = ReadLine(ChangeLogFile)<br/>
+                	Print l ; scan and print line by line<br/>
+                	If l="" Then Exit ; if line is empty, then exit loop<br/>
+                Wend<br/>
+                CloseFile(ChangeLogFile)<br/>
+                DeleteFile("changelog.txt") ; ... and delete it<br/>
+                <br/>
+                WaitKey
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a target=_top href=../index.htm>Index</a><br>
+</body>
+
+</html>
