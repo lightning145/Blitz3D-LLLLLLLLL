@@ -2,6 +2,7 @@
 
 > [!Important]
 > For upgrading from v1.134 to v1.135, you have to read [this instruction](FMOD2SOLOUD.md).
+>
 > Graphics 800,600,32,2
 > run% = 1
 >  While run
@@ -15,6 +16,7 @@
 >      Present
 >  Wend
 >  The above example creates a red window
+>
 
 This is a **fork** of [Blitz3D TSS](https://github.com/Saalvage/Blitz3D), made by [ZiYueCommentary](https://github.com/ZiYueCommentary/Blitz3D).
 
