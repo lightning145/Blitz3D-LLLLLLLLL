@@ -3,25 +3,25 @@
 > [!Important]
 > For upgrading from v1.134 to v1.135, you have to read [this instruction](FMOD2SOLOUD.md).
 >
-> Graphics 800,600,32,2
+>  Graphics 800,600,32,2
 >
-> run% = 1
+>  run% = 1
 >
->  While run
+>   While run
 >
->      InitEvent()
+>       InitEvent()
 >
->      If(QuitEvent) Then
+>       If(QuitEvent) Then
 >
->        run = 0
+>         run = 0
 >
->      End If
+>       End If
 >
->      Cls 255,0,0
+>       Cls 255,0,0
 >
->      Present
+>       Present
 >
->  Wend
+>   Wend
 >
 >  The above example creates a red window
 >
