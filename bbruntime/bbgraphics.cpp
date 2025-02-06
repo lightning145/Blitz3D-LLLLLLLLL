@@ -691,10 +691,12 @@ void bbSetFont(int fi)
 void bbCls(int r,int g,int b)
 {
     device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(r, g, b), 1.0f, 0);
+    device->BeginScene();
 }
 
 void bbPresent()
 {
+    device->EndScene();
     device->Present(0,0,0,0);
 }
 
