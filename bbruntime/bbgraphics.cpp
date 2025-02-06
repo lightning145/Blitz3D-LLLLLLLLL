@@ -683,7 +683,7 @@ int bbColorBlue()
     return gx_canvas->getColor() & 0xff;
 }
 
-void bbSetFont(FontInfo fi)
+void bbSetFont(int fi)
 {
     gxText_SetFont(fi);
 }
@@ -691,12 +691,10 @@ void bbSetFont(FontInfo fi)
 void bbCls(int r,int g,int b)
 {
     device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(r, g, b), 1.0f, 0);
-    device->BeginScene();
 }
 
 void bbPresent()
 {
-    device->EndScene();
     device->Present(0,0,0,0);
 }
 
@@ -762,7 +760,7 @@ void bbCopyRectStretch(int sx, int sy, int w, int h, int dx, int dy, int dw, int
 }
 
 
-FontInfo bbLoadFont(const char* name,int height) {
+int bbLoadFont(const char* name,int height) {
     return gxText_LoadFont(name,height);
 }
 
