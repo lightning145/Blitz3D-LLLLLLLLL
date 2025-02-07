@@ -2,6 +2,8 @@
 #include "bbsys.h"
 #include "../gxruntime/gxutf8.h"
 
+#include <SDL.h>
+
 gxInput* gx_input;
 gxDevice* gx_mouse;
 gxDevice* gx_keyboard;
@@ -12,6 +14,7 @@ static const float JLT = -1.0f / 3.0f;
 static const float JHT = 1.0f / 3.0f;
 
 bool input_create() {
+	/*
 	if (gx_input = gx_runtime->openInput(0)) {
 		if (gx_keyboard = gx_input->getKeyboard()) {
 			if (gx_mouse = gx_input->getMouse()) {
@@ -25,14 +28,15 @@ bool input_create() {
 		}
 		gx_runtime->closeInput(gx_input);
 		gx_input = 0;
-	}
-	return false;
+	}*/
+	return true;
 }
 
 bool input_destroy() {
+	/*
 	gx_joysticks.clear();
 	gx_runtime->closeInput(gx_input);
-	gx_input = 0;
+	gx_input = 0;*/
 	return true;
 }
 
@@ -41,7 +45,28 @@ int bbKeyDown(int n) {
 }
 
 int bbKeyHit(int n) {
-	return gx_keyboard->keyHit(n);
+	const Uint8* state = SDL_GetKeyboardState(NULL);
+	switch (n)
+	{
+	case 200:
+		return state[SDL_SCANCODE_UP];
+		break;
+
+	case 208:
+		return state[SDL_SCANCODE_DOWN];
+		break;
+
+	case 203:
+		return state[SDL_SCANCODE_LEFT];
+		break;
+
+	case 205:
+		return state[SDL_SCANCODE_RIGHT];
+		break;
+	default:
+		break;
+	}
+	//return gx_keyboard->keyHit(n);
 }
 
 int bbGetKey() {

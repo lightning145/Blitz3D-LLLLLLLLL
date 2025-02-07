@@ -3,6 +3,8 @@
 #include "../MultiLang/MultiLang.h"
 #include "bbruntime.h"
 
+#include <SDL.h>
+
 //how many strings allocated
 static int stringCnt;
 
@@ -530,6 +532,18 @@ void bbRuntimeStats() {
 	gx_runtime->debugLog(std::format(MultiLang::stats_unreleased, unrelObjCnt).c_str());
 }
 
+float bbdeltaTime()
+{
+	float deltaTime = 0.0f;
+	float lastFrame = 0.0f;
+
+	float currentFrame = SDL_GetTicks() / 1000.0f;
+	deltaTime = currentFrame - lastFrame;
+	lastFrame = currentFrame;
+
+	return deltaTime;
+}
+
 bool basic_create() {
 	next_handle = 0;
 	handle_map.clear();
@@ -548,6 +562,7 @@ bool basic_destroy() {
 }
 
 void basic_link(void (*rtSym)(const char* sym, void* pc)) {
+	rtSym("#deltaTime",bbdeltaTime);
 
 	rtSym("_bbIntType", &_bbIntType);
 	rtSym("_bbFltType", &_bbFltType);

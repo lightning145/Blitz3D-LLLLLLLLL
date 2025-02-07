@@ -17,6 +17,10 @@ void Window_Create(int w, int h,int windowed);
 void Window_SetTitle(const char* title);
 void Window_Close();
 
+void gxCreateCube(float x, float y);
+
+extern IDirect3DDevice9* device;
+
 int gxText_LoadFont(const char* font, int height)
 {
     return 0;
@@ -46,8 +50,6 @@ void gxText_FreeFont()
 {
     
 }
-
-extern IDirect3DDevice9* device;
 
 gxGraphics* gx_graphics;
 gxCanvas* gx_canvas;
@@ -1410,6 +1412,11 @@ int bbGetWindowQuitEvent()
     return GetWindowQuitEvent();
 }
 
+void bbCreateCube(float x,float y)
+{
+    gxCreateCube(x,y);
+}
+
 bool graphics_create()
 {
  
@@ -1426,6 +1433,7 @@ bool graphics_destroy()
 
 void graphics_link(void (*rtSym)(const char* sym, void* pc))
 {
+    rtSym("CreateCube#x#y",bbCreateCube);
     rtSym("InitEvent",bbInitEvent);
     rtSym("%GetEventType", bbGetEventType);
     rtSym("%GetWindowQuitEvent", bbGetWindowQuitEvent);

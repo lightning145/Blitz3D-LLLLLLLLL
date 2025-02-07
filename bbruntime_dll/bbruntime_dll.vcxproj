@@ -167,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\gxruntime_dx9\gxrect.cpp" />
     <ClCompile Include="..\gxruntime_dx9\gxevent.cpp" />
     <ClCompile Include="..\gxruntime_dx9\gxinit_d3d9.cpp" />
     <ClCompile Include="..\gxruntime_dx9\gxwindow.cpp" />

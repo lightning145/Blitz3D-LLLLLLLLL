@@ -34,6 +34,8 @@ void Init_D3D9(int d_w,int d_h,bool windowed)
 		&d3dpp,
 		&device
 	);
+
+	device->SetRenderState(D3DRS_LIGHTING, false);
 }
 
 void Clean_D3D9()
