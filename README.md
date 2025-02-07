@@ -3,27 +3,46 @@
 > [!Important]
 > For upgrading from v1.134 to v1.135, you have to read [this instruction](FMOD2SOLOUD.md).
 
-   Graphics 800,600,32,2
+Example:
 
-   run% = 1
+      Graphics 800,600
 
-    While run
+      run% = 1
 
-        InitEvent()
- 
-        If(QuitEvent) Then
+      While run
 
-          run = 0
+          InitEvent()
+    
+          event_type% = GetEventType()
 
-        End If
+          If event_type = GetWindowQuitEvent() Then
+             run = 0
+          End If
 
-        Cls 255,0,0
+          Cls 255,0,0
+              If KeyHit(203) Then
+                 x# = -(1.0*deltaTime())            
+              End If
 
-        Present
+              If KeyHit(205) Then
+                 x# = 1.0*deltaTime()           
+              End If
+        
+              If KeyHit(200) Then
+                 y# = 1.0*deltaTime()            
+              End If
 
-    Wend
+              If KeyHit(208) Then
+                 y# = -(1.0*deltaTime())           
+              End If
 
-  The above example creates a red window
+              CreateRect(x,y)
+    
+          Present
+
+      Wend
+
+  This example creates a white rectangle that can be moved
 
 
 This is a **fork** of [Blitz3D TSS](https://github.com/Saalvage/Blitz3D), made by [ZiYueCommentary](https://github.com/ZiYueCommentary/Blitz3D).

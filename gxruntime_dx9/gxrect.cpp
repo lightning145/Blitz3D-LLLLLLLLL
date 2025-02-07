@@ -100,7 +100,7 @@ void Cube::Draw(float x,float y)
 	device->DrawPrimitive(D3DPT_TRIANGLELIST, 0, 2);
 }
 
-void gxCreateCube(float x,float y)
+void gxCreateRect(float x,float y)
 {
 	Cube c = Cube();
 	c.Draw(x,y);
